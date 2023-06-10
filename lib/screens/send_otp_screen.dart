@@ -10,7 +10,8 @@ class SendOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
+    final TextEditingController controller = TextEditingController();
+
     return  Scaffold(
       body: SizedBox(
         width: double.infinity,

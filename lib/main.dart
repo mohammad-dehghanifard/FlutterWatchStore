@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/components/theme.dart';
 import 'package:flutter_watch_store/screens/send_otp_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -21,10 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: WatchTheme.lightTheme(),
       home: const SendOtpScreen(),
     );
   }
