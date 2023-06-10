@@ -9,6 +9,7 @@ class SendOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController();
     return  Scaffold(
       body: SizedBox(
         width: double.infinity,
@@ -20,7 +21,7 @@ class SendOtpScreen extends StatelessWidget {
 
             Dimens.medium.height,
 
-            const WatchTextField()
+             WatchTextField(controller: controller,hintTxt: "مثل : 0939*******",lableTxt: "شماره خود را وارد کنید",)
           ],
         ),
       ),
