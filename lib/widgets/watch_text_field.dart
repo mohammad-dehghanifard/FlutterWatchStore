@@ -25,7 +25,7 @@ class WatchTextField extends StatelessWidget {
     return  Padding(
       padding: EdgeInsets.all(Dimens.medium),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(lableTxt),
           Dimens.medium.height,
