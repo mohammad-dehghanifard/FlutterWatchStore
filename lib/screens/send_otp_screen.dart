@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
+import 'package:flutter_watch_store/resources/texts.dart';
 import 'package:flutter_watch_store/widgets/watch_text_field.dart';
 
 class SendOtpScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class SendOtpScreen extends StatelessWidget {
 
             Dimens.medium.height,
 
-             WatchTextField(controller: controller,hintTxt: "مثل : 0939*******",lableTxt: "شماره خود را وارد کنید",)
+             WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable)
           ],
         ),
       ),
