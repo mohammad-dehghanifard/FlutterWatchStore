@@ -1,3 +1,4 @@
-abstract class AppColors{
-AppColors._();
+class SolidLightColors{
+  SolidLightColors._();
+
 }

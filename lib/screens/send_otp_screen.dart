@@ -21,8 +21,8 @@ class SendOtpScreen extends StatelessWidget {
             Image.asset(Assets.png.mainLogo.path,width: Dimens.large * 10),
 
             Dimens.medium.height,
-
-             WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable)
+            // Text Field
+            WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable)
           ],
         ),
       ),
