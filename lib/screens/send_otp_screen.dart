@@ -3,6 +3,7 @@ import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
+import 'package:flutter_watch_store/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/widgets/watch_text_field.dart';
 
 class SendOtpScreen extends StatelessWidget {
@@ -23,7 +24,11 @@ class SendOtpScreen extends StatelessWidget {
 
             Dimens.medium.height,
             // Text Field
-            WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable)
+            WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable),
+
+            Dimens.medium.height,
+
+            WatchMainButton(title: "ادامه", onTap: () {})
           ],
         ),
       ),
