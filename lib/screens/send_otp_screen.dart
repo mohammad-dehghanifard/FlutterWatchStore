@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/components/button_style.dart';
 import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
@@ -11,6 +12,7 @@ class SendOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     final TextEditingController controller = TextEditingController();
 
     return  Scaffold(
@@ -24,11 +26,20 @@ class SendOtpScreen extends StatelessWidget {
 
             Dimens.medium.height,
             // Text Field
-            WatchTextField(controller: controller,hintTxt: AppTexts.inputNumberHint,lableTxt: AppTexts.inputNumberLable),
+            WatchTextField(controller: controller,hintTxt: WatchTexts.inputNumberHint,lableTxt: WatchTexts.inputNumberLable),
 
             Dimens.medium.height,
 
-            WatchMainButton(title: "ادامه", onTap: () {})
+            Padding(
+              padding:  EdgeInsets.all(Dimens.small),
+              child: WatchMainButton(
+                title: WatchTexts.continuationTxt,
+                onTap: () {},
+                width: double.infinity,
+                height: size.height / 18,
+                style: WatchButtonStyle.mainButtonStyle,
+              ),
+            )
           ],
         ),
       ),
