@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/components/theme.dart';
-import 'package:flutter_watch_store/screens/get_opt_screen.dart';
-import 'package:flutter_watch_store/screens/send_otp_screen.dart';
+import 'package:flutter_watch_store/screens/register_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
-      home: const GetOtpScreen(),
+      home: const RegisterScreen(),
     );
   }
 }
