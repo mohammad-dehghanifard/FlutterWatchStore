@@ -23,12 +23,7 @@ class SendOtpScreen extends StatelessWidget {
             // logo
             Image.asset(Assets.png.mainLogo.path,width: Dimens.large * 10),
 
-            Dimens.small.height,
-
-            Text(WatchTexts.otpSendForTxt.replaceAll(WatchTexts.replaceNumberTxt, "09395509227")),
-            Text(WatchTexts.wrongOtpNumberTxt),
-
-            Dimens.medium.height,
+            Dimens.large.height,
             // Text Field
             WatchTextField(controller: controller,hintTxt: WatchTexts.inputNumberHint,lableTxt: WatchTexts.inputNumberLable),
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/components/button_style.dart';
 import 'package:flutter_watch_store/components/extension.dart';
+import 'package:flutter_watch_store/components/text_style.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/colors.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
@@ -26,7 +27,7 @@ class WatchAvatar extends StatelessWidget {
         TextButton(
             onPressed: onTextPress,
             style: WatchButtonStyle.textButtonStyle,
-            child: Text(WatchTexts.selectUserProfile,style: const TextStyle(color: SolidLightColors.title),))
+            child: Text(WatchTexts.selectUserProfile,style: LightTextStyle.textButtonStyle))
       ],
     );
   }

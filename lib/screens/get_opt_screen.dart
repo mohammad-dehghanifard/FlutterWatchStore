@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/components/extension.dart';
+import 'package:flutter_watch_store/components/text_style.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
@@ -24,15 +25,16 @@ class GetOtpScreen extends StatelessWidget {
             // logo
             Image.asset(Assets.png.mainLogo.path,width: Dimens.large * 10),
 
-            Dimens.small.height,
+            Dimens.medium.height,
 
-            Text(WatchTexts.otpSendForTxt.replaceAll(WatchTexts.replaceNumberTxt, "09395509227")),
-            Text(WatchTexts.wrongOtpNumberTxt),
+            Text(WatchTexts.otpSendForTxt.replaceAll(WatchTexts.replaceNumberTxt,"09395509227"),style: LightTextStyle.normalBodyStyle),
+            Dimens.small.height,
+            Text(WatchTexts.wrongOtpNumberTxt,style: LightTextStyle.normalBodyStyle),
 
             Dimens.medium.height,
             // Text Field
             SizedBox(
-              width: size.width / 1.4,
+              width: size.width / 1.2,
                 child: WatchTextField(controller: controller,hintTxt: WatchTexts.inputNumberHint,lableTxt: WatchTexts.inputActiveCode,prefixLableTxt: "2:56",)),
 
             Dimens.medium.height,
@@ -42,7 +44,7 @@ class GetOtpScreen extends StatelessWidget {
               child: WatchMainButton(
                 title: WatchTexts.continuationTxt,
                 onTap: () {},
-                width: size.width / 1.5,
+                width: size.width / 1.3,
                 height: size.height / 18,
                 style: WatchButtonStyle.mainButtonStyle,
               ),

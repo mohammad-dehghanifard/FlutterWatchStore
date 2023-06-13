@@ -13,6 +13,7 @@ class WatchButtonStyle{
 
   // text button style
   static ButtonStyle textButtonStyle = ButtonStyle(
-      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.small)))
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimens.small))),
+      overlayColor: MaterialStatePropertyAll(SolidLightColors.primary.withOpacity(0.3))
   );
 }

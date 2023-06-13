@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/text_style.dart';
+
 class WatchMainButton extends StatelessWidget {
   const WatchMainButton({
     Key? key,
@@ -24,7 +26,7 @@ class WatchMainButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onTap,
           style: style,
-          child: Text(title,style: const TextStyle(color: Colors.white),)),
+          child: Text(title,style: LightTextStyle.mainButtonStyle)),
     );
   }
 }

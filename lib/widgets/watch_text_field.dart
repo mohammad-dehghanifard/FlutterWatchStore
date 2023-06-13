@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/components/extension.dart';
+import 'package:flutter_watch_store/components/text_style.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 
 class WatchTextField extends StatelessWidget {
@@ -32,8 +33,8 @@ class WatchTextField extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(lableTxt),
-              Text(prefixLableTxt)
+              Text(lableTxt,style: LightTextStyle.formLableStyle),
+              Text(prefixLableTxt,style: LightTextStyle.formLableStyle)
             ],
           ),
           Dimens.medium.height,
@@ -42,6 +43,7 @@ class WatchTextField extends StatelessWidget {
              textAlign: textAlign,
              keyboardType: inputType,
              decoration: InputDecoration(
+               hintStyle: LightTextStyle.formHintStyle,
                hintText: hintTxt,
                prefix: icon
              ),
