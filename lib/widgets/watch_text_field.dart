@@ -9,10 +9,12 @@ class WatchTextField extends StatelessWidget {
     required this.controller,
     this.icon = const SizedBox(),
     this.inputType = TextInputType.text,
-    this.textAlign = TextAlign.center
+    this.textAlign = TextAlign.center,
+    this.prefixLableTxt = '',
   }) : super(key: key);
 
   final String lableTxt;
+  final String prefixLableTxt;
   final String hintTxt;
   final TextEditingController controller;
   final Widget icon;
@@ -27,7 +29,13 @@ class WatchTextField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(lableTxt),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(lableTxt),
+              Text(prefixLableTxt)
+            ],
+          ),
           Dimens.medium.height,
            TextField(
             controller: controller,

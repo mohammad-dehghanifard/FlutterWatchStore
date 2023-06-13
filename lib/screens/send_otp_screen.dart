@@ -14,7 +14,6 @@ class SendOtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final TextEditingController controller = TextEditingController();
-
     return  Scaffold(
       body: SizedBox(
         width: double.infinity,
@@ -23,6 +22,11 @@ class SendOtpScreen extends StatelessWidget {
           children: [
             // logo
             Image.asset(Assets.png.mainLogo.path,width: Dimens.large * 10),
+
+            Dimens.small.height,
+
+            Text(WatchTexts.otpSendForTxt.replaceAll(WatchTexts.replaceNumberTxt, "09395509227")),
+            Text(WatchTexts.wrongOtpNumberTxt),
 
             Dimens.medium.height,
             // Text Field
