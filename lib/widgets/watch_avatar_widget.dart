@@ -3,7 +3,6 @@ import 'package:flutter_watch_store/components/button_style.dart';
 import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/components/text_style.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
-import 'package:flutter_watch_store/resources/colors.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
 

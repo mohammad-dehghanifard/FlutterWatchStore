@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_watch_store/components/button_style.dart';
 import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
+import 'package:flutter_watch_store/widgets/watch_app_bar.dart';
 import 'package:flutter_watch_store/widgets/watch_avatar_widget.dart';
 import 'package:flutter_watch_store/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/widgets/watch_text_field.dart';
+import '../gen/assets.gen.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -15,7 +18,11 @@ class RegisterScreen extends StatelessWidget {
     final TextEditingController controller = TextEditingController();
     final Size size = MediaQuery.of(context).size;
     return  Scaffold(
-      appBar: AppBar(),
+      appBar: WatchAppBar(
+          title: WatchTexts.registerTxt,
+          icon: SvgPicture.asset(Assets.svg.leftArrow),
+          size: size,
+          onIconTap: () {}),
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
@@ -81,3 +88,4 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 }
+
