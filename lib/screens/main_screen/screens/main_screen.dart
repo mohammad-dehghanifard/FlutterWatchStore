@@ -40,7 +40,12 @@ class MainScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  WatchNavItem()
+                  WatchNavItem(
+                    title: WatchTexts.homeTxt,
+                    iconPath: Assets.svg.home,
+                    selected: true,
+                    onTap: () {},
+                  )
                 ],
               ),
             ),
@@ -54,18 +59,35 @@ class MainScreen extends StatelessWidget {
 
 class WatchNavItem extends StatelessWidget {
   const WatchNavItem({
-    super.key,
+    super.key, required this.title, required this.iconPath,required this.onTap, required this.selected
   });
+  final String title;
+  final String iconPath;
+  final bool selected;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(Assets.svg.home),
-        Dimens.small.height,
-        Text(WatchTexts.homeTxt,style: LightTextStyle.activeBottomNav)
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(Dimens.small - 4),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+                iconPath,
+                colorFilter: ColorFilter.mode(
+                    selected? SolidLightColors.activeBtnNav : SolidLightColors.deactivateBtnNav,
+                    BlendMode.srcIn),
+            ),
+            Dimens.small.height,
+            Text(
+                title,
+                style: selected? LightTextStyle.activeBottomNav : LightTextStyle.deactivateBottomNav)
+          ],
+        ),
+      ),
     );
   }
 }
