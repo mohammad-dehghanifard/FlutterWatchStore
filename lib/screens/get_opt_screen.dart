@@ -4,6 +4,7 @@ import 'package:flutter_watch_store/components/text_style.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
+import 'package:flutter_watch_store/route/route_names.dart';
 import 'package:flutter_watch_store/widgets/watch_main_button_widget.dart';
 
 import '../components/button_style.dart';
@@ -43,7 +44,9 @@ class GetOtpScreen extends StatelessWidget {
               padding:  EdgeInsets.all(Dimens.small),
               child: WatchMainButton(
                 title: WatchTexts.continuationTxt,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, WatchRoutes.sendOtpRoute);
+                },
                 width: size.width / 1.3,
                 height: size.height / 18,
                 style: WatchButtonStyle.mainButtonStyle,

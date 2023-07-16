@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_watch_store/components/theme.dart';
 import 'package:flutter_watch_store/resources/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_watch_store/screens/register_screen.dart';
+import 'package:flutter_watch_store/route/route_names.dart';
+import 'package:flutter_watch_store/route/routes_map.dart';
 
 void main() {
   // change status bar color
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
-      home: const RegisterScreen(),
+      initialRoute: WatchRoutes.getOtpRoute,
+      routes: watchRoutes,
     );
   }
 }
