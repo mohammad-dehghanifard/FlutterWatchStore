@@ -4,6 +4,7 @@ import 'package:flutter_watch_store/components/button_style.dart';
 import 'package:flutter_watch_store/components/extension.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
+import 'package:flutter_watch_store/route/route_names.dart';
 import 'package:flutter_watch_store/widgets/watch_app_bar.dart';
 import 'package:flutter_watch_store/widgets/watch_avatar_widget.dart';
 import 'package:flutter_watch_store/widgets/watch_main_button_widget.dart';
@@ -73,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
                 padding:  EdgeInsets.all(Dimens.small),
                 child: WatchMainButton(
                   title: WatchTexts.registerTxt,
-                  onTap: () {},
+                  onTap: () => Navigator.pushReplacementNamed(context, WatchRoutes.mainScreenRoute),
                   width: double.infinity,
                   height: size.height / 18,
                   style: WatchButtonStyle.mainButtonStyle,
