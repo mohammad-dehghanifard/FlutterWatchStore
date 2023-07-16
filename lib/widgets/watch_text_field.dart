@@ -33,8 +33,8 @@ class WatchTextField extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(lableTxt,style: LightTextStyle.formLableStyle),
-              Text(prefixLableTxt,style: LightTextStyle.formLableStyle)
+              Text(lableTxt,style: LightTextStyle.formLabelStyle),
+              Text(prefixLableTxt,style: LightTextStyle.formLabelStyle)
             ],
           ),
           Dimens.medium.height,

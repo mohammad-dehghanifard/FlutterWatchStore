@@ -19,4 +19,7 @@ class WatchTexts{
   static String replaceNumberTxt = "replace";
   static String otpSendForTxt = " کد فعال سازی برای شماره $replaceNumberTxt ارسال شد";
   static String wrongOtpNumberTxt = "شماره وارد شده اشتباه است / اصلاح شماره";
+  static String homeTxt = "خانه";
+  static String basketTxt = "سبد خرید";
+  static String profileTxt = "پروفایل";
 }
