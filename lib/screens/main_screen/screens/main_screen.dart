@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/resources/bottom_nav_index.dart';
 import 'package:flutter_watch_store/screens/main_screen/screens/basket_screen.dart';
 import 'package:flutter_watch_store/screens/main_screen/screens/home_screen.dart';
 import 'package:flutter_watch_store/screens/main_screen/screens/profile_screen.dart';
 import 'package:flutter_watch_store/screens/main_screen/widgets/watch_bottom_navigation.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int selectedIndex = BottomNavIndex.homeIndex;
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
@@ -14,7 +21,7 @@ class MainScreen extends StatelessWidget {
       body: Stack(
         children: [
           IndexedStack(
-            index: 0,
+            index: selectedIndex,
             children: [
               // home screen
               Positioned(
@@ -47,9 +54,16 @@ class MainScreen extends StatelessWidget {
             ],
           ),
           // bottom navigation
-          const Positioned(
+           Positioned(
             bottom: 0,
-            child: WatchBottomNav(),
+            child: WatchBottomNav(
+              index: selectedIndex,
+              onTap: (newIndex) {
+                setState(() {
+                  selectedIndex = newIndex;
+                });
+              },
+            ),
           ),
 
         ],

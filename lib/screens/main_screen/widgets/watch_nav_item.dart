@@ -7,11 +7,12 @@ import 'package:flutter_watch_store/resources/dimens.dart';
 
 class WatchNavItem extends StatelessWidget {
   const WatchNavItem({
-    super.key, required this.title, required this.iconPath,required this.onTap, required this.selected
+    super.key, required this.title, required this.iconPath,required this.onTap, required this.selected, required this.screenIndex
   });
   final String title;
   final String iconPath;
   final bool selected;
+  final int screenIndex;
   final void Function() onTap;
 
   @override
