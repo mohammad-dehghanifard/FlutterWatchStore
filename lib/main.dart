@@ -18,8 +18,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
-      initialRoute: WatchRoutes.getOtpRoute,
+      initialRoute: WatchRoutes.sendOtpRoute,
       routes: watchRoutes,
     );
   }

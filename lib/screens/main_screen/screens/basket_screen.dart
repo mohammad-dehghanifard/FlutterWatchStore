@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/screens/single_producte_screen.dart';
 
 class BasketScreen extends StatelessWidget {
   const BasketScreen({super.key});
@@ -6,7 +7,14 @@ class BasketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(color: Colors.orange),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.orange,
+          child: ElevatedButton(
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SingleProductScreen())),
+      child: const Text("مشاهده همه"),
+    ),),
     );
   }
 }

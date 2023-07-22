@@ -45,7 +45,7 @@ class GetOtpScreen extends StatelessWidget {
               child: WatchMainButton(
                 title: WatchTexts.continuationTxt,
                 onTap: () {
-                  Navigator.pushNamed(context, WatchRoutes.sendOtpRoute);
+                  Navigator.pushReplacementNamed(context, WatchRoutes.registerRoute);
                 },
                 width: size.width / 1.3,
                 height: size.height / 18,

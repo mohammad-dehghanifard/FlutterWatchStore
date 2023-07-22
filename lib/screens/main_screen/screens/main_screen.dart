@@ -14,61 +14,90 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int selectedIndex = BottomNavIndex.homeIndex;
+
+  final GlobalKey<NavigatorState> _homeKey = GlobalKey();
+  final GlobalKey<NavigatorState> _basketKey = GlobalKey();
+  final GlobalKey<NavigatorState> _profileKey = GlobalKey();
+
+  late Map<int,GlobalKey<NavigatorState>> keyMap = {
+    BottomNavIndex.homeIndex : _homeKey,
+    BottomNavIndex.basketIndex : _basketKey,
+    BottomNavIndex.profileIndex : _profileKey,
+  };
+
+  Future<bool> _willPop() async{
+    if(keyMap[selectedIndex]!.currentState!.canPop()){
+      keyMap[selectedIndex]!.currentState!.pop();
+    }
+    return false;
+  }
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Stack(
-        children: [
-          // screens
-          IndexedStack(
-            index: selectedIndex,
-            children: [
-              // home screen
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: size.height * 0.1,
-                child: const HomeScreen(),
-              ),
-
-              // basket screen
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: size.height * 0.1,
-                child: const BasketScreen(),
-              ),
-
-              // profile screen
-              Positioned(
-                top: 0,
-                right: 0,
-                left: 0,
-                bottom: size.height * 0.1,
-                child: const ProfileScreen(),
-              ),
-
-
-            ],
-          ),
-          // bottom navigation
-           Positioned(
-            bottom: 0,
-            child: WatchBottomNav(
+      body: WillPopScope(
+        onWillPop: _willPop,
+        child: Stack(
+          children: [
+            // screens
+            IndexedStack(
               index: selectedIndex,
-              onTap: (newIndex) {
-                setState(() {
-                  selectedIndex = newIndex;
-                });
-              },
-            ),
-          ),
+              children: [
+                // home screen
+                Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: size.height * 0.1,
+                    child: Navigator(
+                      key: _homeKey,
+                      onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) =>  const HomeScreen()),
+                    )
+                ),
 
-        ],
-      ),
+                // basket screen
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  left: 0,
+                  bottom: size.height * 0.1,
+                  child: Navigator(
+                    key: _basketKey,
+                    onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const BasketScreen()),
+                  ),
+                ),
+
+                // profile screen
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  left: 0,
+                  bottom: size.height * 0.1,
+                  child: Navigator(
+                    key: _profileKey,
+                    onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                  ),
+                ),
+
+
+              ],
+            ),
+            // bottom navigation
+            Positioned(
+              bottom: 0,
+              child: WatchBottomNav(
+                index: selectedIndex,
+                onTap: (newIndex) {
+                  setState(() {
+                    selectedIndex = newIndex;
+                  });
+                },
+              ),
+            ),
+
+          ],
+        ),
+      )
     );
   }
 }

@@ -7,8 +7,10 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: Colors.white,
-        child: Text('صفحه لیست محصولات'),
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.white,
+        child: Center(child: Text('صفحه لیست محصول',style: TextStyle(color: Colors.black),)),
       ),
     );
   }

@@ -8,7 +8,6 @@ class WatchTheme{
 
   static ThemeData lightTheme() {
     return ThemeData(
-      useMaterial3: true,
       scaffoldBackgroundColor: SolidLightColors.scaffoldColor,
       primaryColor: SolidLightColors.primary,
       inputDecorationTheme: InputDecorationTheme(

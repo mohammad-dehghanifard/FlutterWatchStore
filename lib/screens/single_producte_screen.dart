@@ -7,8 +7,10 @@ class SingleProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         color: Colors.white,
-        child: Text('صفحه جزئیات محصول'),
+        child: Center(child: Text('صفحه جزئیات محصول',style: TextStyle(color: Colors.black),)),
       ),
     );
   }
