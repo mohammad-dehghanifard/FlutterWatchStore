@@ -24,10 +24,16 @@ class _MainScreenState extends State<MainScreen> {
     BottomNavIndex.basketIndex : _basketKey,
     BottomNavIndex.profileIndex : _profileKey,
   };
+  final List<int> _routeHistory = [BottomNavIndex.homeIndex];
 
   Future<bool> _willPop() async{
     if(keyMap[selectedIndex]!.currentState!.canPop()){
       keyMap[selectedIndex]!.currentState!.pop();
+    } else if(_routeHistory.length > 1){
+      setState(() {
+        _routeHistory.removeLast();
+        selectedIndex = _routeHistory.last;
+      });
     }
     return false;
   }
@@ -90,6 +96,7 @@ class _MainScreenState extends State<MainScreen> {
                 onTap: (newIndex) {
                   setState(() {
                     selectedIndex = newIndex;
+                    _routeHistory.add(newIndex);
                   });
                 },
               ),
