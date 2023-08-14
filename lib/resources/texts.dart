@@ -22,4 +22,5 @@ class WatchTexts{
   static String homeTxt = "خانه";
   static String basketTxt = "سبد خرید";
   static String profileTxt = "پروفایل";
+  static String searchHintTxt = "جست و جوی محصولات...";
 }

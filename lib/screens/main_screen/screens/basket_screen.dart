@@ -8,13 +8,9 @@ class BasketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+
         color: Colors.orange,
-          child: ElevatedButton(
-          onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SingleProductScreen())),
-      child: const Text("مشاهده همه"),
-    ),),
+          child: const Text("مشاهده همه"),),
     );
   }
 }
