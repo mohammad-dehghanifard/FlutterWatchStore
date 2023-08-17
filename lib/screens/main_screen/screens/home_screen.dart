@@ -3,16 +3,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_watch_store/resources/colors.dart';
 import 'package:flutter_watch_store/resources/dimens.dart';
 import 'package:flutter_watch_store/resources/texts.dart';
-
 import '../../../components/text_style.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../widgets/home_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -41,10 +41,14 @@ class HomeScreen extends StatelessWidget {
                   Image.asset(Assets.png.mainLogo.path,scale: 4)
                 ],
               ),
-            )
+            ),
+            HomeSlider()
           ],
         ),
       )
     );
   }
 }
+
+
+
