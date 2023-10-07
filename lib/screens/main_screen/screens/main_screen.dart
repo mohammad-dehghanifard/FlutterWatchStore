@@ -46,47 +46,34 @@ class _MainScreenState extends State<MainScreen> {
         child: Stack(
           children: [
             // screens
-            IndexedStack(
-              index: selectedIndex,
-              children: [
-                // home screen
-                Positioned(
-                    top: 0,
-                    right: 0,
-                    left: 0,
-                    bottom: size.height * 0.1,
-                    child: Navigator(
-                      key: _homeKey,
-                      onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) =>  const HomeScreen()),
-                    )
-                ),
+            Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              bottom: size.height * 0.01,
+              child: IndexedStack(
+                index: selectedIndex,
+                children: [
+                  // home screen
+                  Navigator(
+                    key: _homeKey,
+                    onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) =>  const HomeScreen()),
+                  ),
 
-                // basket screen
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  left: 0,
-                  bottom: size.height * 0.1,
-                  child: Navigator(
+                  // basket screen
+                  Navigator(
                     key: _basketKey,
                     onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const BasketScreen()),
                   ),
-                ),
 
-                // profile screen
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  left: 0,
-                  bottom: size.height * 0.1,
-                  child: Navigator(
+                  // profile screen
+                  Navigator(
                     key: _profileKey,
                     onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const ProfileScreen()),
                   ),
-                ),
 
-
-              ],
+                ],
+              ),
             ),
             // bottom navigation
             Positioned(
