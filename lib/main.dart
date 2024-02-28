@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_watch_store/components/theme.dart';
-import 'package:flutter_watch_store/resources/colors.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_watch_store/route/route_names.dart';
-import 'package:flutter_watch_store/route/routes_map.dart';
+import 'package:flutter_watch_store/core/resources/theme.dart';
+import 'package:flutter_watch_store/core/resources/colors.dart';
+import 'package:flutter_watch_store/core/route/route_names.dart';
+import 'package:flutter_watch_store/core/route/routes_map.dart';
+import 'package:flutter_watch_store/core/services/service_locator.dart';
 
 void main() {
   // change status bar color
@@ -13,6 +14,7 @@ void main() {
       statusBarIconBrightness: Brightness.dark
     )
   );
+  injectDi();
   runApp(const MyApp());
 }
 
