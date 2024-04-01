@@ -9,16 +9,17 @@ class WatchTheme{
   static ThemeData lightTheme() {
     return ThemeData(
       fontFamily: "dana",
-      scaffoldBackgroundColor: SolidLightColors.scaffoldColor,
+      scaffoldBackgroundColor: Colors.white,
       colorScheme: const ColorScheme.light(
         primary: Color(0xFFB93160),
         secondary: Color(0xFFF6F8FE),
         primaryContainer: Color(0xFF9CA4AB),
         error: Color(0xFFE53935),
-
       ),
-      textTheme: TextTheme(
-
+      textTheme:  const TextTheme(
+          titleLarge: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.bold,fontSize: 24),
+          displaySmall: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.w300,fontSize: 12),
+          bodySmall: TextStyle(color: Color(0xFF9CA4AB),fontWeight: FontWeight.w500,fontSize: 12),
       )
     );
   }

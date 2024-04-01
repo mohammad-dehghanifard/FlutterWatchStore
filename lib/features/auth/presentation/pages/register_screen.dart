@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_watch_store/config/route/route_names.dart';
-import 'package:flutter_watch_store/core/resources/button_style.dart';
-import 'package:flutter_watch_store/core/resources/extension.dart';
-import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/texts.dart';
 import 'package:flutter_watch_store/core/widgets/watch_app_bar.dart';
-import 'package:flutter_watch_store/core/widgets/watch_avatar_widget.dart';
-import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
-import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import '../../../../gen/assets.gen.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -30,59 +23,7 @@ class RegisterScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // user avatar
-              WatchAvatar(onTextPress: () {}),
-
-              Dimens.small.height,
-              // input first and last name
-              WatchTextField(controller: controller,
-                hintTxt: WatchTexts.inputFirstAndLastNameHint,
-                lableTxt: WatchTexts.inputFirstAndLastNameLable,
-                textAlign: TextAlign.start
-              ),
-
-              // input phone number
-              WatchTextField(controller: controller,
-                hintTxt: WatchTexts.inputPhoneNumberHint,
-                lableTxt: WatchTexts.inputPhoneNumberLable,
-                textAlign: TextAlign.start
-              ),
-
-              // input address
-              WatchTextField(controller: controller,
-                  hintTxt: WatchTexts.inputAddressHint,
-                  lableTxt: WatchTexts.inputAddressLable,
-                  textAlign: TextAlign.start
-              ),
-
-              // input postal code
-              WatchTextField(controller: controller,
-                  hintTxt: WatchTexts.inputPostalCodeHint,
-                  lableTxt: WatchTexts.inputPostalCodeLable,
-                  textAlign: TextAlign.start
-              ),
-
-              // input location
-              WatchTextField(controller: controller,
-                  hintTxt: WatchTexts.inputSelectLocationHint,
-                  lableTxt: WatchTexts.inputSelectLocationLable,
-                  textAlign: TextAlign.start
-              ),
-
-              Padding(
-                padding:  EdgeInsets.all(Dimens.small),
-                child: WatchMainButton(
-                  title: WatchTexts.registerTxt,
-                  onTap: () => Navigator.pushReplacementNamed(context, WatchRoutes.mainScreenRoute),
-                  width: double.infinity,
-                  height: size.height / 18,
-                  style: WatchButtonStyle.mainButtonStyle,
-                ),
-              )
-
-
-            ],
+            children:[],
           ),
         ),
       ),

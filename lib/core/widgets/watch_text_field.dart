@@ -1,56 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_watch_store/core/resources/extension.dart';
-import 'package:flutter_watch_store/core/resources/text_style.dart';
-import 'package:flutter_watch_store/core/resources/dimens.dart';
+
 
 
 class WatchTextField extends StatelessWidget {
-  const WatchTextField({Key? key,
-    required this.lableTxt,
-    required this.hintTxt,
-    required this.controller,
-    this.icon = const SizedBox(),
-    this.inputType = TextInputType.text,
-    this.textAlign = TextAlign.center,
-    this.prefixLableTxt = '',
+  const WatchTextField({Key? key, this.controller, this.hintText, this.icon,this.inputType = TextInputType.text
+
   }) : super(key: key);
 
-  final String lableTxt;
-  final String prefixLableTxt;
-  final String hintTxt;
-  final TextEditingController controller;
-  final Widget icon;
+  final TextEditingController? controller;
+  final String? hintText;
+  final IconData? icon;
   final TextInputType inputType;
-  final TextAlign textAlign;
-
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: EdgeInsets.all(Dimens.medium),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(lableTxt,style: LightTextStyle.formLabelStyle),
-              Text(prefixLableTxt,style: LightTextStyle.formLabelStyle)
-            ],
-          ),
-          Dimens.medium.height,
-           TextField(
-            controller: controller,
-             textAlign: textAlign,
-             keyboardType: inputType,
-             decoration: InputDecoration(
-               hintStyle: LightTextStyle.formHintStyle,
-               hintText: hintTxt,
-               prefix: icon
-             ),
-
-          )
-        ],
+    return TextFormField(
+      keyboardType: inputType,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(16),
+        filled: true,
+        fillColor: Theme.of(context).colorScheme.secondary,
+        hintText: hintText,
+        hintStyle: Theme.of(context).textTheme.bodySmall,
+        suffixIcon: icon != null? Icon(icon) : null,
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(16)
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color:Theme.of(context).colorScheme.primary ),
+          borderRadius: BorderRadius.circular(16)
+        ),
       ),
     );
   }
