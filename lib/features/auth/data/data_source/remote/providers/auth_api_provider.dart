@@ -9,4 +9,13 @@ class AuthApiProvider {
     final Response response = await _webService.postRequest(url: "/send_sms",data: {"mobile" : phoneNumber});
     return response;
   }
+
+  Future<dynamic> callCheckOtpCode(String mobile,String code) async {
+    final Map<String,dynamic> data = {
+      "mobile" : mobile,
+      "code" : code
+    };
+    final Response response = await _webService.postRequest(url: "/check_sms_code",data: data);
+    return response;
+  }
 }
