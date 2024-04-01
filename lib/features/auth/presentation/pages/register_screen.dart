@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/resources/button_style.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/texts.dart';
-import 'package:flutter_watch_store/core/route/route_names.dart';
 import 'package:flutter_watch_store/core/widgets/watch_app_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_avatar_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
