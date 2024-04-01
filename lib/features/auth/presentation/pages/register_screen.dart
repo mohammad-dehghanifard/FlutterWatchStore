@@ -12,11 +12,6 @@ class RegisterScreen extends StatelessWidget {
     final TextEditingController controller = TextEditingController();
     final Size size = MediaQuery.of(context).size;
     return  Scaffold(
-      appBar: WatchAppBar(
-          title: WatchTexts.registerTxt,
-          icon: SvgPicture.asset(Assets.svg.leftArrow),
-          size: size,
-          onIconTap: () {}),
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(

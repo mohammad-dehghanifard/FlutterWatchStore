@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../resources/text_style.dart';
-
 class WatchMainButton extends StatelessWidget {
   const WatchMainButton({
     Key? key,
