@@ -8,26 +8,17 @@ class WatchTheme{
 
   static ThemeData lightTheme() {
     return ThemeData(
+      fontFamily: "dana",
       scaffoldBackgroundColor: SolidLightColors.scaffoldColor,
-      primaryColor: SolidLightColors.primary,
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: MaterialStateColor.resolveWith((states){
-          if(states.contains(MaterialState.focused)){
-            return SolidLightColors.focusedBorderColor;
-          }else{
-            return SolidLightColors.unfocusedBorderColor;
-          }
-        } ),
-        contentPadding: EdgeInsets.all(Dimens.medium),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimens.medium),
-            borderSide: const BorderSide(color: SolidLightColors.primary)
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Dimens.medium),
-          borderSide: const BorderSide(color: SolidLightColors.borderColor)
-        )
+      colorScheme: const ColorScheme.light(
+        primary: Color(0xFFB93160),
+        secondary: Color(0xFFF6F8FE),
+        primaryContainer: Color(0xFF9CA4AB),
+        error: Color(0xFFE53935),
+
+      ),
+      textTheme: TextTheme(
+
       )
     );
   }
