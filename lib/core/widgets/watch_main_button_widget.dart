@@ -7,16 +7,14 @@ class WatchMainButton extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onTap,
-    required this.style,
-    this.width = 380,
-    this.height = 45,
+    this.width = double.infinity,
+    this.height = 50,
   }) : super(key: key);
 
   final String title;
   final Function() onTap;
   final double width;
   final double height;
-  final ButtonStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +23,11 @@ class WatchMainButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
           onPressed: onTap,
-          style: style,
-          child: Text(title,style: LightTextStyle.mainButtonStyle)),
+          style: ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
+            minimumSize: MaterialStatePropertyAll(Size(width,height))
+          ),
+          child: Text(title,style: Theme.of(context).textTheme.titleMedium!.apply(color: Colors.white))),
     );
   }
 }

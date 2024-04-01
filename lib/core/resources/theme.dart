@@ -20,6 +20,7 @@ class WatchTheme{
           titleLarge: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.bold,fontSize: 24),
           displaySmall: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.w300,fontSize: 12),
           bodySmall: TextStyle(color: Color(0xFF9CA4AB),fontWeight: FontWeight.w500,fontSize: 12),
+          titleMedium: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.bold,fontSize: 16),
       )
     );
   }

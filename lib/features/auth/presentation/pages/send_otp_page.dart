@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
 
@@ -48,7 +49,10 @@ class SendOtpScreen extends StatelessWidget {
                             inputType: TextInputType.phone,
                             icon: CupertinoIcons.device_phone_portrait,
                             hintText: "لطفا شماره موبایل خود را وارد کنید",
-                          )
+                          ),
+                          SizedBox(height: size.height * 0.12),
+                          // button
+                          WatchMainButton( onTap: () {},title: "ارسال کد تایید")
                         ],
                       ),
                     ),
