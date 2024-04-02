@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
       home: MultiBlocProvider(providers: [
-        BlocProvider<AuthBloc>(create: (context) => AuthBloc(sendSmsUseCase: di()))
+        BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
       ], child:  SendOtpScreen()),
       routes: watchRoutes,
     );

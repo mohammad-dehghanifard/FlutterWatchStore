@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/widgets/show_snack_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
@@ -66,6 +67,12 @@ class SendOtpScreen extends StatelessWidget {
                           // button
 
                           BlocConsumer<AuthBloc, AuthState>(
+                            buildWhen: (previous, current) {
+                              if(previous.authStatus == current.authStatus) {
+                                return false;
+                              }
+                              return true;
+                            },
                             listener: (context, state) {
                               if (state.authStatus is AuthError) {
                                 final currentState = state
@@ -75,9 +82,17 @@ class SendOtpScreen extends StatelessWidget {
                                     type: SnackType.error,
                                     content: currentState.errorMessage));
                               }
+                              // goto check otp page
+                              if(state.authStatus is AuthSendSmsSuccess) {
+                                final currentState = state.authStatus as AuthSendSmsSuccess;
+                                Navigator.pushNamed(context, WatchRoutes.checkOtpCode,arguments: {
+                                  "mobile" : phoneNumberTxt.text,
+                                  "code" : currentState.code
+                                });
+                              }
                             },
                             builder: (context, state) {
-                              if (state.authStatus is AuthInitial) {
+                              if (state.authStatus is AuthInitial || state.authStatus is AuthSendSmsSuccess) {
                                 return Visibility(
                                   visible: true,
                                   child: WatchMainButton(
@@ -105,4 +120,3 @@ class SendOtpScreen extends StatelessWidget {
         ));
   }
 }
-

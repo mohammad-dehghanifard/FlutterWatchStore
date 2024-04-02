@@ -11,3 +11,13 @@ final class SendSmsEvent extends AuthEvent{
   @override
   List<Object?> get props => [phoneNumber];
 }
+
+final class CheckSmsEvent extends AuthEvent {
+  const CheckSmsEvent({required this.phoneNumber,required this.code});
+  final String phoneNumber;
+  final String code;
+
+  @override
+  List<Object?> get props => [code,phoneNumber];
+
+}

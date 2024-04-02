@@ -9,18 +9,13 @@ class AuthRepositoryImpl extends AuthRepository{
   @override
   Future<Map<String,dynamic>> sendSms(String phoneNumber) async {
     final Response response = await apiProvider.callSendSmsApi(phoneNumber);
-    print("repo ::: ${response.data}");
     return response.data;
   }
 
   @override
-  Future<bool> checkOtpCode(String mobile, String code) async {
+  Future<Map<String,dynamic>> checkOtpCode(String mobile, String code) async {
     final Response response = await apiProvider.callCheckOtpCode(mobile, code);
-    if(response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
-    }
+    return response.data;
   }
 
 }
