@@ -7,13 +7,10 @@ class AuthRepositoryImpl extends AuthRepository{
   final AuthApiProvider apiProvider;
 
   @override
-  Future<bool> sendSms(String phoneNumber) async {
+  Future<Map<String,dynamic>> sendSms(String phoneNumber) async {
     final Response response = await apiProvider.callSendSmsApi(phoneNumber);
-    if(response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
-    }
+    print("repo ::: ${response.data}");
+    return response.data;
   }
 
   @override

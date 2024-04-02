@@ -15,6 +15,7 @@ class WatchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       keyboardType: inputType,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(16),

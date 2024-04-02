@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_watch_store/Features/auth/presentation/pages/send_otp_page.dart';
 import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/resources/theme.dart';
 import 'package:flutter_watch_store/core/resources/colors.dart';
+import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'config/route/routes_map.dart';
 import 'config/services/service_locator.dart';
 
@@ -33,7 +36,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
-      initialRoute: WatchRoutes.sendOtpRoute,
+      home: MultiBlocProvider(providers: [
+        BlocProvider<AuthBloc>(create: (context) => AuthBloc(sendSmsUseCase: di()))
+      ], child:  SendOtpScreen()),
       routes: watchRoutes,
     );
   }
