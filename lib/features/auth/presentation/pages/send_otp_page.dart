@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_watch_store/core/widgets/show_snack_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
@@ -13,10 +14,17 @@ class SendOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final TextTheme textTheme = Theme.of(context).textTheme;
+    final Size size = MediaQuery
+        .of(context)
+        .size;
+    final TextTheme textTheme = Theme
+        .of(context)
+        .textTheme;
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .primary,
         body: SafeArea(
           child: Column(
             children: [
@@ -29,66 +37,72 @@ class SendOtpScreen extends StatelessWidget {
               // text field and button
               Expanded(
                   child: Container(
-                width: size.width,
-                height: size.height,
-                padding: EdgeInsets.symmetric(
-                    horizontal: 25, vertical: size.height / 12),
-                margin: EdgeInsets.only(top: size.height * 0.06),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(size.width * 0.12),
-                        topRight: Radius.circular(size.width * 0.12))),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // logo
-                      Image.asset(Assets.png.mainLogo.path, scale: 1.5),
-                      SizedBox(height: size.height * 0.06),
-                      // text field
-                      WatchTextField(
-                        controller: phoneNumberTxt,
-                        inputType: TextInputType.phone,
-                        icon: CupertinoIcons.device_phone_portrait,
-                        hintText: "لطفا شماره موبایل خود را وارد کنید",
-                      ),
-                      SizedBox(height: size.height * 0.12),
-                      // button
+                    width: size.width,
+                    height: size.height,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 25, vertical: size.height / 12),
+                    margin: EdgeInsets.only(top: size.height * 0.06),
+                    decoration: BoxDecoration(
+                        color: Theme
+                            .of(context)
+                            .scaffoldBackgroundColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(size.width * 0.12),
+                            topRight: Radius.circular(size.width * 0.12))),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          // logo
+                          Image.asset(Assets.png.mainLogo.path, scale: 1.5),
+                          SizedBox(height: size.height * 0.06),
+                          // text field
+                          WatchTextField(
+                            controller: phoneNumberTxt,
+                            inputType: TextInputType.phone,
+                            icon: CupertinoIcons.device_phone_portrait,
+                            hintText: "لطفا شماره موبایل خود را وارد کنید",
+                          ),
+                          SizedBox(height: size.height * 0.12),
+                          // button
 
-                      BlocConsumer<AuthBloc, AuthState>(
-                        listener: (context, state) {
-                          if(state.authStatus is AuthError){
-                            final currentState = state.authStatus as AuthError;
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text(currentState.errorMessage)
-                                )
-                            );
-                          }
-                        },
-                        builder: (context, state) {
-                          if (state.authStatus is AuthInitial) {
-                            return Visibility(
-                              visible: true,
-                              child: WatchMainButton(
-                                  onTap: () {
-                                     BlocProvider.of<AuthBloc>(context).add(SendSmsEvent(phoneNumber: phoneNumberTxt.text));
-                                  },
-                                  title: "ارسال کد تایید"),
-                            );
-                          } else if (state.authStatus is AuthLoading) {
-                            return const CircularProgressIndicator();
-                          } else {
-                            throw Exception("state invalidate...");
-                          }
-                        },
-                      )
-                    ],
-                  ),
-                ),
-              ))
+                          BlocConsumer<AuthBloc, AuthState>(
+                            listener: (context, state) {
+                              if (state.authStatus is AuthError) {
+                                final currentState = state
+                                    .authStatus as AuthError;
+                                ScaffoldMessenger.of(context).showSnackBar(buildSnackBar(
+                                    context: context,
+                                    type: SnackType.error,
+                                    content: currentState.errorMessage));
+                              }
+                            },
+                            builder: (context, state) {
+                              if (state.authStatus is AuthInitial) {
+                                return Visibility(
+                                  visible: true,
+                                  child: WatchMainButton(
+                                      onTap: () {
+                                        BlocProvider.of<AuthBloc>(context).add(
+                                            SendSmsEvent(
+                                                phoneNumber: phoneNumberTxt
+                                                    .text));
+                                      },
+                                      title: "ارسال کد تایید"),
+                                );
+                              } else if (state.authStatus is AuthLoading) {
+                                return const CircularProgressIndicator();
+                              } else {
+                                throw Exception("state invalidate...");
+                              }
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ))
             ],
           ),
         ));
   }
 }
+
