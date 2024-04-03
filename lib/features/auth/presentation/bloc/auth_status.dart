@@ -23,7 +23,7 @@ final class AuthSendSmsSuccess extends AuthStatus {
 }
 
 final class AuthCheckSmsSuccess extends AuthStatus {
-  const AuthCheckSmsSuccess(this.registered, this.token);
+  const AuthCheckSmsSuccess({required this.registered, required this.token});
   final bool registered;
   final String token;
   @override

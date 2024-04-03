@@ -6,12 +6,17 @@ import 'package:flutter_watch_store/features/auth/domain/usecases/check_otp_usec
 import 'package:flutter_watch_store/features/auth/domain/usecases/send_sms_usecase.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final di = GetIt.instance;
 
-void injectDi() {
+void injectDi() async {
   // services di
   di.registerSingleton<WebService>(WebService());
+
+  //locale storage di
+  di.registerSingletonAsync<SharedPreferences>(() => SharedPreferences.getInstance());
+
   // auth di
   di.registerSingleton<AuthApiProvider>(AuthApiProvider());
   di.registerSingleton<AuthRepository>(AuthRepositoryImpl(di()));
