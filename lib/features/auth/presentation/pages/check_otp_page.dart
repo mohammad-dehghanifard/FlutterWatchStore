@@ -1,13 +1,16 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/config/services/service_locator.dart';
+import 'package:flutter_watch_store/core/resources/storage_key.dart';
+import 'package:flutter_watch_store/core/widgets/show_snack_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_app_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_status.dart';
 import 'package:flutter_watch_store/features/auth/presentation/widgets/otp_fields_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckOtpPage extends StatelessWidget {
   CheckOtpPage({Key? key}) : super(key: key);
@@ -56,9 +59,20 @@ class CheckOtpPage extends StatelessWidget {
                     }
                   },
                   listener: (context, state) {
+                    // navigate to register or main screen
                     if(state.authStatus is AuthCheckSmsSuccess) {
                       final currentState = state.authStatus as AuthCheckSmsSuccess;
-
+                      _saveToken(currentState.token);
+                      Navigator.pushNamed(context, currentState.registered? WatchRoutes.mainScreenRoute : WatchRoutes.registerRoute);
+                    }
+                    // show error
+                    if (state.authStatus is AuthError) {
+                      final currentState = state
+                          .authStatus as AuthError;
+                      ScaffoldMessenger.of(context).showSnackBar(buildSnackBar(
+                          context: context,
+                          type: SnackType.error,
+                          content: currentState.errorMessage));
                     }
                   },
                   builder: (context, state) {
@@ -82,3 +96,6 @@ class CheckOtpPage extends StatelessWidget {
     );
   }
 }
+
+_saveToken(String token) async => await di<SharedPreferences>().setString(StorageKey.token, token);
+

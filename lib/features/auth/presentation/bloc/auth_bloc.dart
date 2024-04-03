@@ -29,6 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(newState: AuthLoading()));
       final params = CheckOtpRequest(mobile: event.phoneNumber,code: event.code);
       final response = await checkKOtpUseCase(params);
+      print(response);
       if(response["result"] == true) {
         emit(state.copyWith(newState: AuthCheckSmsSuccess(registered:response['data']['is_registered'],token:  response["data"]['token'])));
       } else {
