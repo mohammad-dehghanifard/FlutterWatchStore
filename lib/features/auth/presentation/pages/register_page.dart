@@ -49,7 +49,14 @@ class RegisterScreen extends StatelessWidget {
                   12.0.height,
                   // get location in map
                   SelectLocationMapButton(onTap: () {
-                    showDialog(context: context, builder: (context) => MapDialog(),);
+                    showDialog(
+                      context: context,
+                      builder: (context) => MapDialog(
+                        onSelect: (latitude, longitude) {
+
+                        },
+                      ),
+                    );
                   }),
                   24.0.height,
                   // register button
