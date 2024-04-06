@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: WatchTheme.lightTheme(),
       home: MultiBlocProvider(providers: [
         BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
-      ], child:  SendOtpScreen()),
+      ], child: SendOtpScreen()),
       routes: watchRoutes,
     );
   }
