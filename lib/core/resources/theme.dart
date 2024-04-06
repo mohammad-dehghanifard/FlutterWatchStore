@@ -16,6 +16,10 @@ class WatchTheme{
         primaryContainer: Color(0xFF9CA4AB),
         error: Color(0xFFE53935),
       ),
+      dialogTheme: const DialogTheme(
+        backgroundColor: Color(0xFFF6F8FE),
+        surfaceTintColor: Color(0xFFF6F8FE),
+      ),
       textTheme:  const TextTheme(
           titleLarge: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.bold,fontSize: 24),
           displaySmall: TextStyle(color: Color(0xFF282837),fontWeight: FontWeight.w300,fontSize: 12),

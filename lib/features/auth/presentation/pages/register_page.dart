@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
+import 'package:flutter_watch_store/features/auth/presentation/widgets/map_dialog.dart';
 import 'package:flutter_watch_store/features/auth/presentation/widgets/select_location_map_button.dart';
 
 
@@ -47,7 +48,9 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   12.0.height,
                   // get location in map
-                  SelectLocationMapButton(onTap: () {}),
+                  SelectLocationMapButton(onTap: () {
+                    showDialog(context: context, builder: (context) => MapDialog(),);
+                  }),
                   24.0.height,
                   // register button
                   WatchMainButton(title: "ثبت نام", onTap: () {},)

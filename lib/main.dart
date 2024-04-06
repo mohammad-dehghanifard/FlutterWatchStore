@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_watch_store/Features/auth/presentation/pages/register_page.dart';
 import 'package:flutter_watch_store/Features/auth/presentation/pages/send_otp_page.dart';
 import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/resources/theme.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: WatchTheme.lightTheme(),
       home: MultiBlocProvider(providers: [
         BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
-      ], child: SendOtpScreen()),
+      ], child: const RegisterScreen()),
       routes: watchRoutes,
     );
   }
