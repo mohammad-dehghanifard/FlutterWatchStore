@@ -18,4 +18,10 @@ class AuthRepositoryImpl extends AuthRepository{
     return response.data;
   }
 
+  @override
+  Future<Map<String, dynamic>> registerUser({int? phone, String? name, String? address, int? postalCode, double? lat, double? lng}) async {
+    final Response response = await apiProvider.registerUser(phone: phone,name: name,address: address,postalCode: postalCode,lat: lat,lng: lng);
+    return response.data;
+  }
+
 }
