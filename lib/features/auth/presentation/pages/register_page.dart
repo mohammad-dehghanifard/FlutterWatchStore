@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_watch_store/config/services/service_locator.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
+import 'package:flutter_watch_store/core/resources/storage_key.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import 'package:flutter_watch_store/features/auth/presentation/widgets/map_dialog.dart';

@@ -11,11 +11,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 final di = GetIt.instance;
 
 void injectDi() async {
-  // services di
-  di.registerSingleton<WebService>(WebService());
 
   //locale storage di
   di.registerSingletonAsync<SharedPreferences>(() => SharedPreferences.getInstance());
+
+  // services di
+  di.registerSingleton<WebService>(WebService());
 
   // auth di
   di.registerSingleton<AuthApiProvider>(AuthApiProvider());

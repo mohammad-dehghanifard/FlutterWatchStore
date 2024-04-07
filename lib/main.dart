@@ -8,10 +8,12 @@ import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/resources/theme.dart';
 import 'package:flutter_watch_store/core/resources/colors.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'config/route/routes_map.dart';
 import 'config/services/service_locator.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // change status bar color
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: SolidLightColors.scaffoldColor,
@@ -19,6 +21,7 @@ void main() {
     )
   );
   injectDi();
+  await di.isReady<SharedPreferences>();
   runApp(const MyApp());
 }
 
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: WatchTheme.lightTheme(),
       home: MultiBlocProvider(providers: [
         BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
-      ], child: const RegisterScreen()),
+      ], child:  SendOtpScreen()),
       routes: watchRoutes,
     );
   }
