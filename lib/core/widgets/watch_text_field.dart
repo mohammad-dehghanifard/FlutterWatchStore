@@ -30,6 +30,14 @@ class WatchTextField extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(16)
         ),
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+            borderRadius: BorderRadius.circular(16)
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+            borderRadius: BorderRadius.circular(16)
+        ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color:Theme.of(context).colorScheme.primary ),
           borderRadius: BorderRadius.circular(16)

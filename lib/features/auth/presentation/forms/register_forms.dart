@@ -22,7 +22,7 @@ class RegisterForms {
     return null;
   }
 
-  String? validatePhone(String? value) {
+  String? validatePostalCode(String? value) {
     if (value == null || value.isEmpty) {
       return "لطفا شماره تماس معتبر وارد کنید";
     } else if(value.length < 10) {

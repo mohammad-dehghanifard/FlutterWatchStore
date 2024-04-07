@@ -42,21 +42,34 @@ class RegisterScreen extends StatelessWidget {
                     Text("لطفا جهت تکمیل ثبت نام فرم زیر را تکمیل کنید",
                         style: textTheme.bodySmall),
                     32.0.height,
-                    const WatchTextField(
-                      hintText: "لطفا نام خود را وار کنید",
-                      icon: CupertinoIcons.person,
-                    ),
-                    12.0.height,
-                    const WatchTextField(
-                      hintText: "لطفا آدرس خود را وار کنید",
-                      icon: CupertinoIcons.home,
-                    ),
-
-                    12.0.height,
-                    const WatchTextField(
-                      hintText: "لطفا یک کد پستی معتبر وارد کنید",
-                      icon: Icons.local_post_office_outlined,
-                    ),
+                     // forms
+                     Form(
+                       key: registerForm.formKey,
+                         child: Column(
+                           children: [
+                             WatchTextField(
+                               controller: registerForm.nameTxt,
+                               validator: registerForm.validateName,
+                               hintText: "لطفا نام خود را وار کنید",
+                               icon: CupertinoIcons.person,
+                             ),
+                             12.0.height,
+                             WatchTextField(
+                               controller: registerForm.addressTxt,
+                               validator: registerForm.validateAddress,
+                               hintText: "لطفا آدرس خود را وار کنید",
+                               icon: CupertinoIcons.home,
+                             ),
+                             12.0.height,
+                             WatchTextField(
+                               controller: registerForm.postalCodeTxt,
+                               validator: registerForm.validatePostalCode,
+                               hintText: "لطفا یک کد پستی معتبر وارد کنید",
+                               icon: Icons.local_post_office_outlined,
+                             ),
+                           ],
+                         )
+                     ),
                     12.0.height,
                     // get location in map
                     SelectLocationMapButton(onTap: () {
@@ -81,13 +94,16 @@ class RegisterScreen extends StatelessWidget {
                         return WatchMainButton(
                           title: "ثبت نام",
                           onTap: () {
-                            final RegisterRequest request = RegisterRequest(
-                              phone: "09351592323",
-                              name: "",
-                              address: "",
-                              lat: lat,
-                              lng : lng
-                            );
+                            if(registerForm.formKey.currentState!.validate()){
+                              final RegisterRequest request = RegisterRequest(
+                                  phone: "09351592323",
+                                  name: registerForm.nameTxt.text,
+                                  address: registerForm.addressTxt.text,
+                                  postalCod: int.parse(registerForm.postalCodeTxt.text),
+                                  lat: lat,
+                                  lng : lng
+                              );
+                            }
                           },
                         );
                       },
