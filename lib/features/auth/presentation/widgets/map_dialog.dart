@@ -96,7 +96,6 @@ class _MapDialogState extends State<MapDialog> {
               16.0.height,
               WatchMainButton(title: "ثبت موقعیت", onTap: () {
                 if(selectedPosition != null) {
-                  Navigator.pop(context);
                   widget.onSelect(selectedPosition!.latitude,selectedPosition!.longitude);
                 }
               }),

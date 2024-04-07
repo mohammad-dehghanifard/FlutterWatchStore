@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class WatchTextField extends StatelessWidget {
-  const WatchTextField({Key? key, this.controller, this.hintText, this.icon,this.inputType = TextInputType.text
+  const WatchTextField({Key? key, this.controller, this.hintText, this.icon,this.inputType = TextInputType.text, this.validator
 
   }) : super(key: key);
 
@@ -11,12 +11,14 @@ class WatchTextField extends StatelessWidget {
   final String? hintText;
   final IconData? icon;
   final TextInputType inputType;
+  final String? Function(String? value)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       keyboardType: inputType,
+      validator: validator,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(16),
         filled: true,

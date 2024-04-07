@@ -8,6 +8,6 @@ import 'package:flutter_watch_store/features/auth/presentation/pages/check_otp_p
 Map<String,Widget Function(BuildContext context)> watchRoutes = {
   WatchRoutes.checkOtpCode : (context) =>  CheckOtpPage(),
   WatchRoutes.sendOtpRoute : (context) =>  SendOtpScreen(),
-  WatchRoutes.registerRoute : (context) => const RegisterScreen(),
+  WatchRoutes.registerRoute : (context) =>  RegisterScreen(),
   WatchRoutes.mainScreenRoute : (context) => const MainScreen(),
 };
