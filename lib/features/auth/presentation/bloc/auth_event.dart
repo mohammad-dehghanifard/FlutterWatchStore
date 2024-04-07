@@ -21,3 +21,11 @@ final class CheckSmsEvent extends AuthEvent {
   List<Object?> get props => [code,phoneNumber];
 
 }
+
+final class RegisterEvent extends AuthEvent {
+  const RegisterEvent(this.registerRequest);
+  final RegisterRequest registerRequest;
+
+  @override
+  List<Object?> get props => [registerRequest];
+}

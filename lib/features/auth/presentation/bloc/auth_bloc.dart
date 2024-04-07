@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_watch_store/features/auth/data/data_source/remote/requests/check_otp_request.dart';
+import 'package:flutter_watch_store/features/auth/data/data_source/remote/requests/register_request.dart';
 import 'package:flutter_watch_store/features/auth/domain/usecases/check_otp_usecase.dart';
 import 'package:flutter_watch_store/features/auth/domain/usecases/send_sms_usecase.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_status.dart';
