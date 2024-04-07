@@ -1,5 +1,7 @@
+import 'package:flutter_watch_store/features/auth/data/data_source/remote/requests/register_request.dart';
+
 abstract class AuthRepository {
   Future<Map<String,dynamic>> sendSms(String phoneNumber);
   Future<Map<String,dynamic>> checkOtpCode(String mobile,String code);
-  Future<Map<String,dynamic>> registerUser({int phone,String name,String address,int postalCode,double lat,double lng});
+  Future<Map<String,dynamic>> registerUser(RegisterRequest request);
 }

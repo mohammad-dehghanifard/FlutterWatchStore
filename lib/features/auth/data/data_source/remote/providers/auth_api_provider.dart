@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_watch_store/config/services/service_locator.dart';
 import 'package:flutter_watch_store/config/services/web_service.dart';
+import 'package:flutter_watch_store/features/auth/data/data_source/remote/requests/register_request.dart';
 
 class AuthApiProvider {
   final WebService _webService = di();
@@ -20,14 +21,14 @@ class AuthApiProvider {
   }
 
 
-  Future<Response> registerUser({int? phone, String? name, String? address, int? postalCode, double? lat, double? lng}) async {
+  Future<Response> registerUser(RegisterRequest request) async {
     final FormData formData = FormData.fromMap({
-      "phone": phone,
-      "name" : name,
-      "address" : address,
-      "postal_code" : postalCode,
-      "lat" : lat,
-      "lnn" : lng,
+      "phone": request.phone,
+      "name" : request.name,
+      "address" : request.address,
+      "postal_code" : request.postalCod,
+      "lat" : request.lat,
+      "lnn" : request.lng,
     });
     final Response response = await _webService.postRequest(url: "/register",formData: formData);
     return response;
