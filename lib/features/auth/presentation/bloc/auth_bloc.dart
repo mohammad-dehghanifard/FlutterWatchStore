@@ -44,11 +44,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<RegisterEvent>((event,emit) async {
       emit(state.copyWith(newRegisterStatus: RegisterLoading()));
       final response = await registerUseCase(event.registerRequest);
+      print(response);
       if(response["result"] == true) {
         emit(state.copyWith(newRegisterStatus: RegisterSuccess()));
       } else {
         emit(state.copyWith(newRegisterStatus: RegisterError(response["message"])));
       }
+      emit(state.copyWith(newRegisterStatus: RegisterInitial()));
     }
 
 

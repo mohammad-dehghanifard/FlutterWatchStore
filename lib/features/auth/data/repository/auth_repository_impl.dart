@@ -22,6 +22,7 @@ class AuthRepositoryImpl extends AuthRepository{
   @override
   Future<Map<String, dynamic>> registerUser(RegisterRequest request) async {
     final Response response = await apiProvider.registerUser(request);
+    print(response);
     return response.data;
   }
 

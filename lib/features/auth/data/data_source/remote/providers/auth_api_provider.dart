@@ -23,12 +23,13 @@ class AuthApiProvider {
 
   Future<Response> registerUser(RegisterRequest request) async {
     final FormData formData = FormData.fromMap({
+      "image" : [],
       "phone": request.phone,
       "name" : request.name,
       "address" : request.address,
       "postal_code" : request.postalCod,
       "lat" : request.lat,
-      "lnn" : request.lng,
+      "lng" : request.lng,
     });
     final Response response = await _webService.postRequest(url: "/register",formData: formData);
     return response;

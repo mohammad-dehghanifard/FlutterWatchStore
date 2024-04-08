@@ -1,15 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/config/services/service_locator.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
+import 'package:flutter_watch_store/core/resources/storage_key.dart';
+import 'package:flutter_watch_store/core/widgets/show_snack_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import 'package:flutter_watch_store/features/auth/data/data_source/remote/requests/register_request.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_watch_store/features/auth/presentation/bloc/register_status.dart';
 import 'package:flutter_watch_store/features/auth/presentation/forms/register_forms.dart';
 import 'package:flutter_watch_store/features/auth/presentation/widgets/map_dialog.dart';
 import 'package:flutter_watch_store/features/auth/presentation/widgets/select_location_map_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatelessWidget {
    RegisterScreen({Key? key}) : super(key: key);
@@ -80,6 +85,12 @@ class RegisterScreen extends StatelessWidget {
                               onSelect: (latitude, longitude) {
                                 lat = longitude;
                                 lng = longitude;
+                                Navigator.pop(context);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    buildSnackBar(
+                                        context: context,
+                                        content: "موقعیت مکانی با موفقیت ثبت شد")
+                                );
                               },
                             ),
                       );
@@ -87,25 +98,52 @@ class RegisterScreen extends StatelessWidget {
                     24.0.height,
                     // register button
                     BlocConsumer<AuthBloc, AuthState>(
+                      buildWhen: (previous, current) {
+                        if(current.registerStatus == previous.registerStatus) {
+                          return false;
+                        }
+                        return true;
+                      },
                       listener: (context, state) {
-                        // TODO: implement listener
+                        // go to home screen
+                        if(state.registerStatus is RegisterSuccess) {
+                          Navigator.pushReplacementNamed(context,WatchRoutes.mainScreenRoute);
+                        }
+                        if(state.registerStatus is RegisterError) {
+                          final currentState = state.registerStatus as RegisterError;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              buildSnackBar(
+                                  context: context,
+                                  type: SnackType.error,
+                                  content: currentState.errorMsg)
+                          );
+                        }
                       },
                       builder: (context, state) {
-                        return WatchMainButton(
-                          title: "ثبت نام",
-                          onTap: () {
-                            if(registerForm.formKey.currentState!.validate()){
-                              final RegisterRequest request = RegisterRequest(
-                                  phone: "09351592323",
-                                  name: registerForm.nameTxt.text,
-                                  address: registerForm.addressTxt.text,
-                                  postalCod: int.parse(registerForm.postalCodeTxt.text),
-                                  lat: lat,
-                                  lng : lng
-                              );
-                            }
-                          },
-                        );
+                        if(state.registerStatus is RegisterInitial) {
+                          return WatchMainButton(
+                            title: "ثبت نام",
+                            onTap: () {
+                              if(registerForm.formKey.currentState!.validate()){
+                                final RegisterRequest request = RegisterRequest(
+                                    phone: di<SharedPreferences>().getString(StorageKey.userPhone),
+                                    name: registerForm.nameTxt.text,
+                                    address: registerForm.addressTxt.text,
+                                    postalCod: int.parse(registerForm.postalCodeTxt.text),
+                                    lat: lat,
+                                    lng : lng
+                                );
+                                di<AuthBloc>().add(RegisterEvent(request));
+                              }
+                            },
+                          );
+                        }
+                        if(state.registerStatus is RegisterLoading) {
+                          return const CircularProgressIndicator();
+                        }
+                        else {
+                          throw Exception("state invalidate...");
+                        }
                       },
                     )
                   ],

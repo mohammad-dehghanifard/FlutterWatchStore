@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_watch_store/config/route/route_names.dart';
+import 'package:flutter_watch_store/config/services/service_locator.dart';
+import 'package:flutter_watch_store/core/resources/storage_key.dart';
 import 'package:flutter_watch_store/core/widgets/show_snack_bar.dart';
 import 'package:flutter_watch_store/core/widgets/watch_main_button_widget.dart';
 import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_status.dart';
 import 'package:flutter_watch_store/gen/assets.gen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SendOtpScreen extends StatelessWidget {
   SendOtpScreen({Key? key}) : super(key: key);
@@ -15,17 +18,10 @@ class SendOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery
-        .of(context)
-        .size;
-    final TextTheme textTheme = Theme
-        .of(context)
-        .textTheme;
+    final Size size = MediaQuery.of(context).size;
+    final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: SafeArea(
           child: Column(
             children: [
@@ -85,6 +81,7 @@ class SendOtpScreen extends StatelessWidget {
                               // goto check otp page
                               if(state.authStatus is AuthSendSmsSuccess) {
                                 final currentState = state.authStatus as AuthSendSmsSuccess;
+                                _savePhone(phoneNumberTxt.text);
                                 Navigator.pushNamed(context, WatchRoutes.checkOtpCode,arguments: {
                                   "mobile" : phoneNumberTxt.text,
                                   "code" : currentState.code
@@ -120,3 +117,4 @@ class SendOtpScreen extends StatelessWidget {
         ));
   }
 }
+_savePhone(String phone) async => await di<SharedPreferences>().setString(StorageKey.userPhone, phone);
