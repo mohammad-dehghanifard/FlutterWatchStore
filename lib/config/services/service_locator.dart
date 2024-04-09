@@ -7,6 +7,10 @@ import 'package:flutter_watch_store/features/auth/domain/usecases/register_useca
 import 'package:flutter_watch_store/features/auth/domain/usecases/send_sms_usecase.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_watch_store/features/auth/presentation/forms/register_forms.dart';
+import 'package:flutter_watch_store/features/home/data/data_source/remote/home_api_provider.dart';
+import 'package:flutter_watch_store/features/home/data/repository/home_repository_impl.dart';
+import 'package:flutter_watch_store/features/home/domain/repository/home_repository.dart';
+import 'package:flutter_watch_store/features/home/domain/usecase/home_usecase.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,4 +32,10 @@ void injectDi() async {
   di.registerSingleton<RegisterUseCase>(RegisterUseCase(di()));
   di.registerSingleton<AuthBloc>(AuthBloc(checkKOtpUseCase: di(),sendSmsUseCase: di(),registerUseCase: di()));
   di.registerSingleton<RegisterForms>(RegisterForms());
+
+  // Home di
+  di.registerSingleton<HomeApiProvider>(HomeApiProvider());
+  di.registerSingleton<IHomeRepository>(HomeRepositoryImpl(di()));
+  di.registerSingleton<HomeUseCase>(HomeUseCase(di()));
+
 }
