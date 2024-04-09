@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
 
 

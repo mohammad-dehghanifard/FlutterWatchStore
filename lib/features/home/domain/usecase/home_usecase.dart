@@ -8,7 +8,6 @@ class HomeUseCase extends UseCase<HomeEntity?,NoParams> {
   @override
   Future<HomeEntity?> call(NoParams params) async {
     final result = await repository.fetchHomeData();
-    print(result.toString());
     return result;
 
   }
