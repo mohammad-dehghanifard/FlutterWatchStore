@@ -2,7 +2,7 @@ import 'package:flutter_watch_store/features/home/data/models/banner_model.dart'
 import 'package:flutter_watch_store/features/home/data/models/category_model.dart';
 import 'package:flutter_watch_store/features/home/data/models/slider_model.dart';
 import 'package:flutter_watch_store/features/home/data/models/watch_product_model.dart';
-import 'package:flutter_watch_store/features/home/domain/entities/home_entitie.dart';
+import 'package:flutter_watch_store/features/home/domain/entities/home_entity.dart';
 
 
 class HomeModel extends HomeEntity{
