@@ -14,6 +14,7 @@ class WatchTheme{
         primary: Color(0xFFB93160),
         secondary: Color(0xFFF6F8FE),
         primaryContainer: Color(0xFF9CA4AB),
+        secondaryContainer: Color(0xFFEEEEEE),
         error: Color(0xFFE53935),
       ),
       dialogTheme: const DialogTheme(
