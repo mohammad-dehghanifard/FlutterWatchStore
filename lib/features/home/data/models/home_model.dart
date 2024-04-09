@@ -2,19 +2,23 @@ import 'package:flutter_watch_store/features/home/data/models/banner_model.dart'
 import 'package:flutter_watch_store/features/home/data/models/category_model.dart';
 import 'package:flutter_watch_store/features/home/data/models/slider_model.dart';
 import 'package:flutter_watch_store/features/home/data/models/watch_product_model.dart';
+import 'package:flutter_watch_store/features/home/domain/entities/home_entitie.dart';
 
 
-class HomeModel {
-  bool? result;
-  String? message;
-  HomeData? data;
+class HomeModel extends HomeEntity{
 
-  HomeModel({this.result, this.message, this.data});
+  HomeModel({
+    bool? result,
+    String? message,
+    HomeData? data,
+  }) : super(result: result, message: message, data: data);
 
-  HomeModel.fromJson(Map<String, dynamic> json) {
-    result = json['result'];
-    message = json['message'];
-    data = json['data'] != null ? HomeData.fromJson(json['data']) : null;
+ factory HomeModel.fromJson(Map<String, dynamic> json) {
+   return HomeModel(
+     result: json['result'],
+     message: json['message'],
+     data:  json['data'] != null ? HomeData.fromJson(json['data']) : null
+   );
   }
 }
 
