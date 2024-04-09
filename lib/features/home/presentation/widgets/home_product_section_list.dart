@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
+import 'package:flutter_watch_store/core/widgets/product_list_item_widget.dart';
 
 class HomeProductSection extends StatelessWidget {
   const HomeProductSection({

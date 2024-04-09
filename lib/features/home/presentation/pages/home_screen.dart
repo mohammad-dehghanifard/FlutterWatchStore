@@ -36,7 +36,23 @@ class HomeScreen extends StatelessWidget {
               // categories
               const HomeCategoryListItemWidget(),
               // amazing products list
-              const HomeProductSection()
+              const HomeProductSection(),
+              16.0.height,
+              // banner
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Dimens.bodyMargin),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                    child: Image.network("https://watchstore.sasansafari.com/public/images/sliders/big/1652882081.jpg")),
+              ),
+              16.0.height,
+              // popular products list
+              const HomeProductSection(),
+              16.0.height,
+              // new products list
+              const HomeProductSection(),
+
+              SizedBox(height: MediaQuery.sizeOf(context).height / 8)
             ],
           ),
         )
