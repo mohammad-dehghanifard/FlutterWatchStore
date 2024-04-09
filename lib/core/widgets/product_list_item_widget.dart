@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
+import 'package:flutter_watch_store/features/home/data/models/watch_product_model.dart';
 
 class ProductListItemWidget extends StatelessWidget {
   const ProductListItemWidget({
-    super.key,
+    super.key, required this.product,
   });
-
+  final WatchProduct product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,16 +24,18 @@ class ProductListItemWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Image.network("https://watchstore.sasansafari.com/public/images/product/small/1654350887.png",scale: 2,),
-                const Text("ساعت مچی عقربه ای مردانه سیکو SRQ015J1"),
+                Image.network(product.image!,scale: 2,),
+                6.0.height,
+                Text(product.title ?? ""),
                 12.0.height,
                 // off price
                 Align(
                   alignment: Alignment.topLeft,
                   child: Column(
                     children: [
-                      const Text("900,000,00 تومان",style: TextStyle(decoration: TextDecoration.lineThrough),),
-                      Text("441,000,00 تومان",style: Theme.of(context).textTheme.titleSmall!.apply(color: Theme.of(context).colorScheme.error),),
+                       Text("${product.price}تومان",style:  TextStyle(decoration: product.discount! > 0? TextDecoration.lineThrough : null),),
+                      if(product.discount! > 0)
+                      Text("${product.discountPrice} تومان",style: Theme.of(context).textTheme.titleSmall!.apply(color: Theme.of(context).colorScheme.error),),
                     ],
                   ),
                 )
@@ -40,6 +43,7 @@ class ProductListItemWidget extends StatelessWidget {
             ),
           ),
           // off price
+          if(product.discount! > 0)
           Positioned(
             left: 5,
             top : 5,
@@ -50,7 +54,7 @@ class ProductListItemWidget extends StatelessWidget {
                 color: Color(0xFFE53935),
                 shape: BoxShape.circle,
               ),
-              child: Center(child: Text("51%",style: Theme.of(context).textTheme.titleMedium!.apply(color: Colors.white))),
+              child: Center(child: Text("${product.discount.toString()}%",style: Theme.of(context).textTheme.titleMedium!.apply(color: Colors.white))),
             ),
           ),
         ],

@@ -11,6 +11,7 @@ import 'package:flutter_watch_store/features/home/data/data_source/remote/home_a
 import 'package:flutter_watch_store/features/home/data/repository/home_repository_impl.dart';
 import 'package:flutter_watch_store/features/home/domain/repository/home_repository.dart';
 import 'package:flutter_watch_store/features/home/domain/usecase/home_usecase.dart';
+import 'package:flutter_watch_store/features/home/presentation/bloc/home_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,5 +38,6 @@ void injectDi() async {
   di.registerSingleton<HomeApiProvider>(HomeApiProvider());
   di.registerSingleton<IHomeRepository>(HomeRepositoryImpl(di()));
   di.registerSingleton<HomeUseCase>(HomeUseCase(di()));
+  di.registerSingleton<HomeBloc>(HomeBloc(di()));
 
 }

@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
 import 'package:flutter_watch_store/core/widgets/product_list_item_widget.dart';
+import 'package:flutter_watch_store/features/home/data/models/watch_product_model.dart';
 
 class HomeProductSection extends StatelessWidget {
   const HomeProductSection({
-    super.key,
+    super.key, required this.products,
   });
+  final List<WatchProduct> products;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.sizeOf(context).height / 3.2,
+      height: MediaQuery.sizeOf(context).height / 3.1,
       color: Theme.of(context).colorScheme.primary,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: products.length + 1,
           itemBuilder: (context, index) {
             if(index == 0 ) {
               return
@@ -32,7 +34,8 @@ class HomeProductSection extends StatelessWidget {
                                 ),
                 );
             } else {
-              return const ProductListItemWidget();
+              final WatchProduct product = products[ index - 1];
+              return  ProductListItemWidget(product: product);
             }
           },
       ),

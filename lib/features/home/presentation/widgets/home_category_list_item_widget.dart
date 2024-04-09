@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
+import 'package:flutter_watch_store/features/home/data/models/category_model.dart';
 
 class HomeCategoryListItemWidget extends StatelessWidget {
-  const HomeCategoryListItemWidget({super.key});
-
+  const HomeCategoryListItemWidget({super.key, required this.categories});
+  final List<CategoryModel> categories;
   @override
   Widget build(BuildContext context) {
     final colorScheme =  Theme.of(context).colorScheme;
@@ -18,7 +19,7 @@ class HomeCategoryListItemWidget extends StatelessWidget {
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.16,
           child: ListView.builder(
-            itemCount: 6,
+            itemCount: categories.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return Padding(
@@ -35,10 +36,10 @@ class HomeCategoryListItemWidget extends StatelessWidget {
                         color: colorScheme.primaryContainer.withOpacity(0.15),
                         border: Border.all(color: colorScheme.primary,width: 2)
                       ),
-                      child: Image.network("https://watchstore.sasansafari.com/public/images/category/small/1654351128.png"),
+                      child: Image.network(categories[index].image ?? ""),
                     ),
                     4.0.height,
-                    const Text("ساعت اسپرت")
+                    Text(categories[index].name ?? "")
                   ],
                 ),
               );

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_watch_store/features/home/data/models/home_model.dart';
+import 'package:flutter_watch_store/features/home/domain/entities/home_entity.dart';
 
 sealed class HomeStatus extends Equatable {
   const HomeStatus();
@@ -17,7 +17,7 @@ final class HomeLoading extends HomeStatus{
 
 final class HomeSuccess extends HomeStatus{
   const HomeSuccess(this.homeData);
-  final HomeData homeData;
+  final HomeEntity homeData;
   @override
   List<Object?> get props => [homeData];
 }
