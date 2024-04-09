@@ -8,6 +8,7 @@ import 'package:flutter_watch_store/config/route/route_names.dart';
 import 'package:flutter_watch_store/core/resources/theme.dart';
 import 'package:flutter_watch_store/core/resources/colors.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:flutter_watch_store/features/auth/presentation/pages/splash_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'config/route/routes_map.dart';
 import 'config/services/service_locator.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
       theme: WatchTheme.lightTheme(),
       home: MultiBlocProvider(providers: [
         BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
-      ], child:  RegisterScreen()),
+      ], child:  const SplashPage()),
       routes: watchRoutes,
     );
   }
