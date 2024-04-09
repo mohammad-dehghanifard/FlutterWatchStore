@@ -37,14 +37,11 @@ class _HomeSliderState extends State<HomeSlider> {
                 });
               },
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Dimens.medium),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.network(
-                      images[index],
-                      fit: BoxFit.fill,
-                    ),
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Image.network(
+                    images[index],
+                    fit: BoxFit.fill,
                   ),
                 );
               },
