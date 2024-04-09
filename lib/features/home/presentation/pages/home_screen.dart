@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_watch_store/core/resources/extension.dart';
-import 'package:flutter_watch_store/core/resources/colors.dart';
-import 'package:flutter_watch_store/core/resources/dimens.dart';
-import 'package:flutter_watch_store/core/widgets/category_item.dart';
-import 'package:flutter_watch_store/Features/home/presentation/widgets/home_search_bar.dart';
 import 'package:flutter_watch_store/Features/home/presentation/widgets/home_slider.dart';
-import 'package:flutter_watch_store/gen/assets.gen.dart';
+import 'package:flutter_watch_store/core/resources/dimens.dart';
+import 'package:flutter_watch_store/core/widgets/watch_text_field.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -14,44 +10,35 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
-    return Scaffold(
+    return  Scaffold(
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
-            //search bar
-            HomeSearchBar(size: size),
-            // slider
-            HomeSlider(),
-            Dimens.large.height,
-            // category's
-            SizedBox(
-              height: size.height / 8,
-              child: ListView.builder(
-                itemCount: fakeCategory.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                  var data = fakeCategory[index];
-                    return CategoryItem(
-                      title: data[0] as String,
-                      imgPath: data[1] as String,
-                      gradiant: data[2] as List<Color>,
-                    );
-                  },
+            // search
+            const Padding(
+              padding: EdgeInsets.all(Dimens.bodyMargin),
+              child: WatchTextField(
+                hintText: "کالای مورد نظر خود را جست و جو کنید...",
+                icon: Icons.search,
               ),
+            ),
+            // slider
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:Dimens.bodyMargin),
+              child: HomeSlider(),
+            ),
+            // categories
+            ListView.builder(
+                itemBuilder: (context, index) {
+                  return Container();
+                },
             )
           ],
-        ),
+        )
       )
     );
   }
 }
-
-final fakeCategory = [
-  ["کلاسیک",Assets.svg.clasic,WatchGradiant.lightBrown],
-  ["هوشمند",Assets.svg.smart,WatchGradiant.lightGary],
-  ["دیجیتال",Assets.svg.digital,WatchGradiant.lightPink],
-  ["رومیزی",Assets.svg.smart,WatchGradiant.lightPurple],
-];
 
 
 
