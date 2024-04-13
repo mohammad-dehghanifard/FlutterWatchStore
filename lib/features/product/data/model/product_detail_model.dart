@@ -1,21 +1,25 @@
 import 'package:flutter_watch_store/features/product/data/model/product_detail_data.dart';
+import 'package:flutter_watch_store/features/product/domain/entities/product_detail_entity.dart';
 
-class ProductDetail {
-  bool? result;
-  String? message;
-  List<ProductDetailData>? data;
+class ProductDetail extends ProductDetailEntity {
 
-  ProductDetail({this.result, this.message, this.data});
 
-  ProductDetail.fromJson(Map<String, dynamic> json) {
-    result = json['result'];
-    message = json['message'];
-    if (json['data'] != null) {
-      data = <ProductDetailData>[];
-      json['data'].forEach((v) {
-        data!.add(ProductDetailData.fromJson(v));
-      });
-    }
+  ProductDetail({
+    bool? result,
+    String? message,
+    List<ProductDetailData>? data,
+  }) : super(data: data, message: message, result: result);
+
+  factory ProductDetail.fromJson(Map<String, dynamic> json) {
+    final data = <ProductDetailData>[];
+    return ProductDetail(
+      result: json['result'],
+      message: json['message'],
+      data: json['data'].forEach((v) {
+        data.add(ProductDetailData.fromJson(v));
+      })
+
+    );
   }
 
 }
