@@ -12,12 +12,13 @@ class ProductDetail extends ProductDetailEntity {
 
   factory ProductDetail.fromJson(Map<String, dynamic> json) {
     final data = <ProductDetailData>[];
+    json['data'].forEach((v) {
+      data.add(ProductDetailData.fromJson(v));
+    });
     return ProductDetail(
       result: json['result'],
       message: json['message'],
-      data: json['data'].forEach((v) {
-        data.add(ProductDetailData.fromJson(v));
-      })
+      data: data
 
     );
   }

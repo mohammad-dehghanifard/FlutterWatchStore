@@ -6,6 +6,6 @@ class GetProductDetailUseCase extends UseCase<ProductDetailEntity?,int> {
   final IProductDetailRepository repository;
   GetProductDetailUseCase(this.repository);
   @override
-  Future<ProductDetailEntity?> call(int params) => repository.fetchDetail(params);
+  Future<ProductDetailEntity?> call(int params) async => repository.fetchDetail(params);
 
 }
