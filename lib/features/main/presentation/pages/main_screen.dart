@@ -29,21 +29,16 @@ class _MainScreenState extends State<MainScreen> {
             bottom: size.height * 0.01,
             child: IndexedStack(
               index: selectedIndex,
-              children: [
+              children: const [
                 // home screen
-                Navigator(
-                  onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) =>  const HomeScreen()),
-                ),
+                HomeScreen(),
 
                 // basket screen
-                Navigator(
-                  onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const CartScreen()),
-                ),
+               CartScreen(),
 
                 // profile screen
-                Navigator(
-                  onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const ProfileScreen()),
-                ),
+                ProfileScreen(),
+
 
               ],
             ),
