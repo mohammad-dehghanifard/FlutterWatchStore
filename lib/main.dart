@@ -38,9 +38,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       locale: const Locale('fa'),
       theme: WatchTheme.lightTheme(),
-      home: MultiBlocProvider(providers: [
-        BlocProvider<AuthBloc>(create: (_) => di<AuthBloc>())
-      ], child:  const SplashPage()),
+      home: const SplashPage(),
       routes: watchRoutes,
     );
   }
