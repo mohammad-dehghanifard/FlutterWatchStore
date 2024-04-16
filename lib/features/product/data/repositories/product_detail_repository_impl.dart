@@ -17,4 +17,10 @@ class ProductRepositoryImpl extends IProductDetailRepository {
     return null;
   }
 
+  @override
+  Future<bool> addProductToCart(int productId) async {
+    final Response response = await apiProvider.addToCart(productId);
+    return response.data["result"];
+  }
+
 }

@@ -9,4 +9,10 @@ class ProductDetailApiProvider{
     final Response response = await _webService.getRequest(url: "/product_details/$id");
     return response;
   }
+
+  Future<Response> addToCart(int id) async {
+    final Response response = await _webService.postRequest(url: "/add_to_cart",data: {"product_id" : id});
+    return response;
+  }
+
 }

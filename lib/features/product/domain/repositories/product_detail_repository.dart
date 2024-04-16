@@ -2,4 +2,5 @@ import 'package:flutter_watch_store/features/product/domain/entities/product_det
 
 abstract class IProductDetailRepository {
   Future<ProductDetailEntity?> fetchDetail(int id);
+  Future<bool> addProductToCart(int productId);
 }
