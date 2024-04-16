@@ -4,6 +4,7 @@ import 'package:flutter_watch_store/features/product/domain/entities/product_det
 import 'package:flutter_watch_store/features/product/domain/usecases/get_product_detail_usecase.dart';
 import 'package:flutter_watch_store/features/product/presentation/bloc/product_detail_cart_status.dart';
 import 'package:flutter_watch_store/features/product/presentation/bloc/product_detail_status.dart';
+import 'package:flutter_watch_store/features/product/presentation/pages/product_detail_page.dart';
 
 part 'product_detail_event.dart';
 part 'product_detail_state.dart';

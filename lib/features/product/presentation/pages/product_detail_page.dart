@@ -16,10 +16,14 @@ class ProductDetailPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(Dimens.bodyMargin),
-        child: WatchMainButton(
-          onTap: () {},
-          title: "اضافه کردن به سبد خرید",
-        ),
+        child: BlocBuilder<ProductDetailBloc, ProductDetailState>(
+          builder: (context, state) {
+            return WatchMainButton(
+              onTap: () {},
+              title: "اضافه کردن به سبد خرید",
+            );
+          },
+),
       ),
       body: SafeArea(
         child: BlocConsumer<ProductDetailBloc, ProductDetailState>(

@@ -12,3 +12,11 @@ final class FetchProductDetailEvent extends ProductDetailEvent {
   List<Object?> get props => [productId];
 
 }
+
+final class AddProductToCartEvent extends ProductDetailEvent {
+  final int productId;
+  const AddProductToCartEvent({required this.productId});
+  @override
+  List<Object?> get props => [productId];
+
+}
