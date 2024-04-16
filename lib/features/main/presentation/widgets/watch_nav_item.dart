@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_watch_store/core/resources/extension.dart';
 import 'package:flutter_watch_store/core/resources/text_style.dart';
-import 'package:flutter_watch_store/core/resources/colors.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 
 
@@ -18,17 +17,18 @@ class WatchNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(Dimens.small - 4),
+        padding: const EdgeInsets.all(Dimens.small - 4),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               iconPath,
               colorFilter: ColorFilter.mode(
-                  selected? SolidLightColors.activeBtnNav : SolidLightColors.deactivateBtnNav,
+                  selected? colorScheme.primary : colorScheme.primaryContainer,
                   BlendMode.srcIn),
             ),
             Dimens.small.height,
