@@ -15,6 +15,7 @@ import 'package:flutter_watch_store/features/home/presentation/bloc/home_bloc.da
 import 'package:flutter_watch_store/features/product/data/data_source/remote/product_detail_api_provider.dart';
 import 'package:flutter_watch_store/features/product/data/repositories/product_detail_repository_impl.dart';
 import 'package:flutter_watch_store/features/product/domain/repositories/product_detail_repository.dart';
+import 'package:flutter_watch_store/features/product/domain/usecases/add_to_cart_usecase.dart';
 import 'package:flutter_watch_store/features/product/domain/usecases/get_product_detail_usecase.dart';
 import 'package:flutter_watch_store/features/product/presentation/bloc/product_detail_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -49,6 +50,7 @@ void injectDi() async {
   di.registerSingleton<ProductDetailApiProvider>(ProductDetailApiProvider());
   di.registerSingleton<IProductDetailRepository>(ProductRepositoryImpl(di()));
   di.registerSingleton<GetProductDetailUseCase>(GetProductDetailUseCase(di()));
-  di.registerSingleton<ProductDetailBloc>(ProductDetailBloc(di()));
+  di.registerSingleton<AddToCartUseCase>(AddToCartUseCase(di()));
+  di.registerSingleton<ProductDetailBloc>(ProductDetailBloc(di(),di()));
 
 }

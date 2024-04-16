@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_watch_store/core/resources/dimens.dart';
 import 'package:flutter_watch_store/features/product/data/model/product_detail_data.dart';
@@ -55,30 +56,31 @@ class ProductDetailWidget extends StatelessWidget {
         const SizedBox(height: Dimens.medium),
         Text("رنگ های موجود :",style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
         // colors
-        Row(
-          children: List.generate(product!.colors!.length, (index) {
-            return Padding(
-              padding: const EdgeInsets.only(left: Dimens.medium),
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: Dimens.small,
-                        vertical: Dimens.medium
-                    ),
-                    width: 45,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black),
-                        color: Color(_stringToHex(product!.colors![index].code!))
-                    ),
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.07,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: product!.colors!.length,
+            itemBuilder: (context, index) {
+            return Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: Dimens.small,
+                      vertical: Dimens.medium
                   ),
-                  Text(product!.colors![index].title!)
-                ],
-              ),
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.black),
+                      color: Color(_stringToHex(product!.colors![index].code!))
+                  ),
+                ),
+                Text(product!.colors![index].title!)
+              ],
             );
-          }),
+          },),
         ),
         Divider(color: Theme.of(context).colorScheme.primaryContainer,thickness: 0.6),
         const SizedBox(height: Dimens.medium),
