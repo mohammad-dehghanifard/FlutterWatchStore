@@ -19,44 +19,46 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Stack(
-        children: [
-          // screens
-          Positioned(
-            top: 0,
-            right: 0,
-            left: 0,
-            bottom: size.height * 0.01,
-            child: IndexedStack(
-              index: selectedIndex,
-              children: const [
-                // home screen
-                HomeScreen(),
-
-                // basket screen
-               CartScreen(),
-
-                // profile screen
-                ProfileScreen(),
-
-
-              ],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            // screens
+            Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              bottom: size.height * 0.01,
+              child: IndexedStack(
+                index: selectedIndex,
+                children: const [
+                  // home screen
+                  HomeScreen(),
+        
+                  // basket screen
+                 CartScreen(),
+        
+                  // profile screen
+                  ProfileScreen(),
+        
+        
+                ],
+              ),
             ),
-          ),
-          // bottom navigation
-          Positioned(
-            bottom: 0,
-            child: WatchBottomNav(
-              index: selectedIndex,
-              onTap: (newIndex) {
-                setState(() {
-                  selectedIndex = newIndex;
-                });
-              },
+            // bottom navigation
+            Positioned(
+              bottom: 0,
+              child: WatchBottomNav(
+                index: selectedIndex,
+                onTap: (newIndex) {
+                  setState(() {
+                    selectedIndex = newIndex;
+                  });
+                },
+              ),
             ),
-          ),
-
-        ],
+        
+          ],
+        ),
       )
     );
   }

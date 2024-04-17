@@ -23,7 +23,7 @@ class WatchMainButton extends StatelessWidget {
           onPressed: onTap,
           style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
-            minimumSize: MaterialStatePropertyAll(Size(width,height))
+            minimumSize: MaterialStatePropertyAll(Size(width,height)),
           ),
           child: Text(title,style: Theme.of(context).textTheme.titleMedium!.apply(color: Colors.white))),
     );
