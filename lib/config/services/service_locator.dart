@@ -7,6 +7,11 @@ import 'package:flutter_watch_store/features/auth/domain/usecases/register_useca
 import 'package:flutter_watch_store/features/auth/domain/usecases/send_sms_usecase.dart';
 import 'package:flutter_watch_store/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_watch_store/features/auth/presentation/forms/register_forms.dart';
+import 'package:flutter_watch_store/features/cart/data/data_source/remote/cart_api_provider.dart';
+import 'package:flutter_watch_store/features/cart/data/repositories/cart_repository_impl.dart';
+import 'package:flutter_watch_store/features/cart/domain/repositories/cart_repository.dart';
+import 'package:flutter_watch_store/features/cart/domain/usecases/get_cart_usecase.dart';
+import 'package:flutter_watch_store/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:flutter_watch_store/features/home/data/data_source/remote/home_api_provider.dart';
 import 'package:flutter_watch_store/features/home/data/repository/home_repository_impl.dart';
 import 'package:flutter_watch_store/features/home/domain/repository/home_repository.dart';
@@ -52,5 +57,12 @@ void injectDi() async {
   di.registerSingleton<GetProductDetailUseCase>(GetProductDetailUseCase(di()));
   di.registerSingleton<AddToCartUseCase>(AddToCartUseCase(di()));
   di.registerSingleton<ProductDetailBloc>(ProductDetailBloc(di(),di()));
+
+
+  // cart di
+  di.registerSingleton<CartApiProvider>(CartApiProvider(di()));
+  di.registerSingleton<ICartRepository>(CartRepositoryImpl(di()));
+  di.registerSingleton<GetCartUseCase>(GetCartUseCase(di()));
+  di.registerSingleton<CartBloc>(CartBloc(di()));
 
 }
